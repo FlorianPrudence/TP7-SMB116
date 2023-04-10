@@ -48,12 +48,9 @@ public class StationListActivity extends AppCompatActivity {
                             stationList.setVisibility(View.VISIBLE);
                             stationList.setOnItemClickListener((adapterView, view, i, l) -> {
                                 Station s = adapter.getItem(i);
-                                Toast.makeText(StationListActivity.this, s.toString(), Toast.LENGTH_LONG).show();
-                                //Intent intent = new Intent(this,UEActivity.class);
-                                //intent.putExtra("selectedStation", selectedUE);
-                                // On démarre l'activité en via l'ActivityResultLauncher pour savoir si l'utilisateur à bien supprimé l'UE
-                                //startActivity(intent);
-                                //UEActivityResult.launch(intent);
+                                Intent intent = new Intent(StationListActivity.this, StationDetailActivity.class);
+                                intent.putExtra("selectedStation", s);
+                                startActivity(intent);
                             });
 
                         }

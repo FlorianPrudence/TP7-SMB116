@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Détails de la station"
+        android:textAlignment="center"
+        android:textSize="24dp"/>
+
+    <TableLayout
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom :"/>
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code :"/>
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lattitude :"/>
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationLattitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude :"/>
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vélos dispos :" />
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationVelos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emplacements :"/>
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationEmplacements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capacité :" />
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/stationCapacite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:id="@+id/connectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="subscribeToStation"
+        android:text="S'abonner à la station"/>
+</LinearLayout>

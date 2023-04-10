@@ -1,5 +1,10 @@
 package cnam.smb116.tp7.StationBusiness;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Station {
+public class Station implements Parcelable {
     String station_id="";
     String name="";
     String lat="";
@@ -26,6 +31,46 @@ public class Station {
         this.capacity = capacity;
         this.stationCode = stationCode;
     }
+
+    protected Station(Parcel in) {
+        station_id = in.readString();
+        name = in.readString();
+        lat = in.readString();
+        lon = in.readString();
+        capacity = in.readString();
+        stationCode = in.readString();
+        numBikesAvailable = in.readString();
+        numDocksAvailable = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(station_id);
+        parcel.writeString(name);
+        parcel.writeString(lat);
+        parcel.writeString(lon);
+        parcel.writeString(capacity);
+        parcel.writeString(stationCode);
+        parcel.writeString(numBikesAvailable);
+        parcel.writeString(numDocksAvailable);
+    }
+
+    public static final Creator<Station> CREATOR = new Creator<Station>() {
+        @Override
+        public Station createFromParcel(Parcel in) {
+            return new Station(in);
+        }
+
+        @Override
+        public Station[] newArray(int size) {
+            return new Station[size];
+        }
+    };
 
     public String getStation_id() {
         return station_id;
@@ -159,4 +204,6 @@ public class Station {
         }
         return true;
     }
+
+
 }
