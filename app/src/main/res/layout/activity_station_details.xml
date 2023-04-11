@@ -117,7 +117,7 @@
     <Button
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
-        android:id="@+id/connectButton"
+        android:id="@+id/subscribeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="subscribeToStation"

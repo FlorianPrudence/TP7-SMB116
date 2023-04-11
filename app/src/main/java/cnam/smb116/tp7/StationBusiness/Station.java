@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// La station est rendu parcelable pour être passée dans l'Intent
 public class Station implements Parcelable {
     String station_id="";
     String name="";
@@ -136,6 +137,8 @@ public class Station implements Parcelable {
         this.numDocksAvailable = numDocksAvailable;
     }
 
+
+    // Fonction légèrement modifiée pour également charger la liste des stations à afficher dans l'IHM
     public static boolean loadStations(HashMap<String, Station> hmap_stations, ArrayList<Station> stationsList) {
         HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
@@ -170,6 +173,7 @@ public class Station implements Parcelable {
         return true;
     }
 
+    // Le toString sert dans l'affichage des éléments de la liste
     @Override
     public String toString() {
         return stationCode + ": " + name;

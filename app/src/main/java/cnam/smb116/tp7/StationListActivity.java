@@ -34,18 +34,21 @@ public class StationListActivity extends AppCompatActivity {
     }
 
     private void populateStationList() {
-        Toast.makeText(this, "Récupération des stations de Velib", Toast.LENGTH_SHORT).show();
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
+                // Chargement des stations et des disponibilité
                 if(Station.loadStations(hmap_stations, stations) && Station.loadCapacity(hmap_stations)) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            // On peuple stationList avec les stations récupérées
                             ArrayAdapter<Station> adapter = new ArrayAdapter<Station>(StationListActivity.this, android.R.layout.simple_list_item_1, stations);
                             stationList.setAdapter(adapter);
                             textWait.setVisibility(View.INVISIBLE);
                             stationList.setVisibility(View.VISIBLE);
+                            // Fonction exécuté à l'appuie d'un des éléments de la liste de stations
+                            // Accède aux détails de la station choisie
                             stationList.setOnItemClickListener((adapterView, view, i, l) -> {
                                 Station s = adapter.getItem(i);
                                 Intent intent = new Intent(StationListActivity.this, StationDetailActivity.class);
