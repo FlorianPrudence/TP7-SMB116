@@ -23,9 +23,7 @@ public class SubscribeStationService extends Service {
     private Station station;
     private HashMap<String, Station> hmap_station = new HashMap<>();
     private Thread t;
-
     private static final int notificationId = 1;
-
     private final AtomicBoolean running = new AtomicBoolean(false);
 
     @Nullable
@@ -50,6 +48,8 @@ public class SubscribeStationService extends Service {
         }
     }
 
+    //Récupère les informations sur la station à laquelle l'utilisateur s'est abonné
+    //Affiche une notification contenant les disponibilités à jour.
     private void updateSubscribedStation(String stationID) {
         t = new Thread(new Runnable() {
             @Override
@@ -57,18 +57,20 @@ public class SubscribeStationService extends Service {
                 Station.loadStations(hmap_station, new ArrayList<>());
                 running.set(true);
                 while (running.get()) {
-
-                        Station.loadCapacity(hmap_station);
-                        station = hmap_station.get(stationID);
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(SubscribeStationService.this, MainActivity.CHANNEL_ID)
+                    Station.loadCapacity(hmap_station);
+                    station = hmap_station.get(stationID);
+                    if(ContextCompat.checkSelfPermission(SubscribeStationService.this,
+                            "android.permission.POST_NOTIFICATIONS") == PackageManager.PERMISSION_GRANTED) {
+                        NotificationCompat.Builder builder =
+                                new NotificationCompat.Builder(SubscribeStationService.this, MainActivity.CHANNEL_ID)
                                 .setSmallIcon(R.drawable.ic_launcher_background)
                                 .setContentTitle("StationUpdater")
-                                .setContentText(station.getName() + " : " + station.getNumBikesAvailable() + " vélos disponibles; "  + station.getNumDocksAvailable() + " emplacements disponibles.")
+                                .setContentText(station.getName() + " : " + station.getNumBikesAvailable() + " vélos disponibles; "
+                                    + station.getNumDocksAvailable() + " emplacements disponibles.")
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
                         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(SubscribeStationService.this);
-                        if(ContextCompat.checkSelfPermission(SubscribeStationService.this, "android.permission.POST_NOTIFICATIONS") == PackageManager.PERMISSION_GRANTED) {
-                            notificationManager.notify(notificationId, builder.build());
-                        }
+                        notificationManager.notify(notificationId, builder.build());
+                    }
                     try {
                         Thread.sleep(20000);
                     } catch (Exception ex) {

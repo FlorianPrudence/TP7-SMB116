@@ -43,11 +43,12 @@ public class StationListActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             // On peuple stationList avec les stations récupérées
-                            ArrayAdapter<Station> adapter = new ArrayAdapter<Station>(StationListActivity.this, android.R.layout.simple_list_item_1, stations);
+                            ArrayAdapter<Station> adapter = new ArrayAdapter<Station>(StationListActivity.this,
+                                    android.R.layout.simple_list_item_1, stations);
                             stationList.setAdapter(adapter);
                             textWait.setVisibility(View.INVISIBLE);
                             stationList.setVisibility(View.VISIBLE);
-                            // Fonction exécuté à l'appuie d'un des éléments de la liste de stations
+                            // Fonction exécutée à l'appuie d'un des éléments de la liste de stations
                             // Accède aux détails de la station choisie
                             stationList.setOnItemClickListener((adapterView, view, i, l) -> {
                                 Station s = adapter.getItem(i);

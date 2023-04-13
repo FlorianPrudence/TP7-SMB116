@@ -11,10 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import cnam.smb116.tp7.StationBusiness.Station;
 
 public class StationDetailActivity extends AppCompatActivity {
-
-    private TextView stationName, stationLattitude, stationLongitude, stationCapacite, stationCode, stationVelos, stationEmplacements;
     private String stationId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +19,13 @@ public class StationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_station_details);
 
         // Affiche les informations de la station dans l'IHM
-        stationVelos = findViewById(R.id.stationVelos);
-        stationLattitude = findViewById(R.id.stationLattitude);
-        stationCode = findViewById(R.id.stationCode);
-        stationCapacite = findViewById(R.id.stationCapacite);
-        stationName = findViewById(R.id.stationName);
-        stationLongitude = findViewById(R.id.stationLongitude);
-        stationEmplacements = findViewById(R.id.stationEmplacements);
+        TextView stationVelos = findViewById(R.id.stationVelos);
+        TextView stationLattitude = findViewById(R.id.stationLattitude);
+        TextView stationCode = findViewById(R.id.stationCode);
+        TextView stationCapacite = findViewById(R.id.stationCapacite);
+        TextView stationName = findViewById(R.id.stationName);
+        TextView stationLongitude = findViewById(R.id.stationLongitude);
+        TextView stationEmplacements = findViewById(R.id.stationEmplacements);
 
         Intent intent = getIntent();
         Station s = intent.getParcelableExtra("selectedStation");

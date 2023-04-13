@@ -43,12 +43,10 @@ public class Station implements Parcelable {
         numBikesAvailable = in.readString();
         numDocksAvailable = in.readString();
     }
-
     @Override
     public int describeContents() {
         return 0;
     }
-
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(station_id);
@@ -60,7 +58,6 @@ public class Station implements Parcelable {
         parcel.writeString(numBikesAvailable);
         parcel.writeString(numDocksAvailable);
     }
-
     public static final Creator<Station> CREATOR = new Creator<Station>() {
         @Override
         public Station createFromParcel(Parcel in) {
